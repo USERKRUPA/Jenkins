@@ -37,35 +37,40 @@ public class UtilMethods {
 		}
 	}
 	
-	public static void selectDDByText(WebDriver driver, By locator, String text) {
-		WebElement element = driver.findElement(locator);
-		Select ddlitems = new Select(element);
-		List<WebElement> options = ddlitems.getOptions();
-		for(WebElement option : options) {
-			if(option.getText().equalsIgnoreCase(text)) {
-				ddlitems.selectByVisibleText(text);
-				break;
+	public static void selectDDByText(WebDriver driver, By locator, By locatorState, String text) {
+		driver.findElement(locator).click();
+		List<WebElement> elements = driver.findElements(locatorState);
+		for(WebElement element : elements) {
+			if(element.getText().equalsIgnoreCase(text)) {
+				element.click();
 			}
 		}
+
 	}
 	
 	public static void selectRadio(WebDriver driver, By locator, String value) {
 		List<WebElement> radios = driver.findElements(locator);
 		for(WebElement radio : radios) {
 			if(radio.getAttribute("value").equalsIgnoreCase(value)) {
-				
-				if (radio.isEnabled()) {
-				    radio.click();
-				} else {
-				    System.out.println("Radio button is not enabled.");
-				}
-
+			    //radio.click();
 				System.out.println(radio.getAttribute("value"));
-				//break;
+				break;
 			}
 		}	
 	}
 	
+	public static void selectCheckBox(WebDriver driver, By locator, String value) {
+		List<WebElement> chks = driver.findElements(locator);
+		for(WebElement chk : chks) {
+			if(chk.getAttribute("value").equalsIgnoreCase(value)) {
+				System.out.println(chk.getAttribute("value"));
+				if (!chk.isSelected()) {
+				 //   chk.click();
+				    break;
+				} 
+			}
+		}		
+	}
 	public static void clickButton(WebDriver driver, By locator, String text) {
 		WebElement element = driver.findElement(locator);
 		System.out.println(element.getText());
