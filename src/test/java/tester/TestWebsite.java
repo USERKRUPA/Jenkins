@@ -23,7 +23,7 @@ public class TestWebsite {
 
 		//selectDDByValue(driver, By.name("nf-field-22"),"mobile-automation");
 //		
-		selectDDByText(driver, By.cssSelector("select[name='department']"),"Tresurer's Office");
+//		selectDDByText(driver, By.cssSelector("select[name='department']"),"Tresurer's Office");
 //		
 		selectRadio(driver, By.name("inlineRadioOptions"), "Male");
 //		
